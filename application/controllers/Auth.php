@@ -18,18 +18,18 @@ class Auth extends CI_Controller
 			$this->load->view('login');
 		} else {
 			$username 	= $this->input->post('username', 'trim');
-			$password 	= $this->input->post('password', 'trim');
+			$password 	= md5($this->input->post('password', 'trim'));
 			$level 		= $this->input->post('level');
 
 			// $data = $this->M_auth->login($username, $password, $level);
 			if ($level == 0) {
-				$data = $this->db->get_where('admin', ['username' => $username, 'password' => $password])->row_array();
+				$data = $this->db->get_where('admin', ['username' => $username, 'password' => $password])->row();
 			} else {
 				$data = $this->db->get_where('user', ['username' => $username, 'password' => $password])->row();
 			}
 
-			var_dump($data);
-			die;
+			// var_dump($data);
+			// die;
 
 			if ($data) {
 				$session = [

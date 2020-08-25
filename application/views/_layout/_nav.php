@@ -11,49 +11,49 @@
         <!-- Menu Toggle Button -->
         <a href="<?php echo base_url(); ?>assets/#" class="dropdown-toggle" data-toggle="dropdown">
           <!-- The user image in the navbar-->
-          
+
           <?php
-              if ($this->session->userdata("level") == 0) { ?>
-                <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="user-image" alt="User Image">
-              <?php
-              } else { ?>
-                <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="user-image" alt="User Image">
-              <?php
-              } 
+          if ($this->session->userdata("level") == 0) { ?>
+            <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="user-image" alt="User Image">
+          <?php
+          } else { ?>
+            <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="user-image" alt="User Image">
+          <?php
+          }
           ?>
           <!-- hidden-xs hides the username on small devices so only the image appears. -->
           <span class="hidden-xs">
-          <?php 
-          if ($this->session->userdata("level") == 0) {
-                  echo $userdata->nama; 
-              } else {
-                  echo $userdata->nama; 
-              }
-          ?>
+            <?php
+            if ($this->session->userdata("level") == 0) {
+              echo $userdata->nama;
+            } else {
+              echo $userdata->nama;
+            }
+            ?>
           </span>
         </a>
         <ul class="dropdown-menu">
           <!-- The user image in the menu -->
           <li class="user-header">
-              <?php
-                if ($this->session->userdata("level") == 0) { ?>
-                    <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="img-circle" alt="User Image">
-                <?php
-                } else { ?>
-                    <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="img-circle" alt="User Image">
-                <?php
-                }
-              ?>
-              
+            <?php
+            if ($this->session->userdata("level") == 0) { ?>
+              <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="img-circle" alt="User Image">
+            <?php
+            } else { ?>
+              <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="img-circle" alt="User Image">
+            <?php
+            }
+            ?>
+
             <p>
-              <?php 
-                if ($this->session->userdata("level") == 0) {
-                    echo $userdata->nama; 
-                    echo "<small>Admin</small>";
-                } else{
-                    echo $userdata->nama; 
-                    echo "<small>User</small>";
-                }
+              <?php
+              if ($this->session->userdata("level") == 0) {
+                echo $userdata->nama;
+                echo "<small>Admin</small>";
+              } else {
+                echo $userdata->nama;
+                echo "<small>User</small>";
+              }
               ?>
             </p>
           </li>
