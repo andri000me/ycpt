@@ -5,11 +5,11 @@ class M_riwayat_pembayaran_psb extends CI_Model {
 
 	public function select_all_pendaftaran($id) 
 	{
-		$sql = "SELECT * FROM pendaftaran
-				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran.id_unit_pendidikan
+		$sql = "SELECT * FROM pendaftaran2
+				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran2.id_unit_pendidikan
 				LEFT JOIN user ON user.id_unit_pendidikan = unit_pendidikan.id_unit_pendidikan
 				WHERE user.id_user = '$id' 
-				ORDER BY pendaftaran.nomor_daftar ASC";
+				ORDER BY pendaftaran2.nomor_daftar ASC";
 		$data = $this->db->query($sql);
 		return $data->result();
 	}
@@ -42,7 +42,7 @@ class M_riwayat_pembayaran_psb extends CI_Model {
 
 	public function select_all_detail_pendaftaran($nomor_daftar) 
 	{
-		$sql = "SELECT * FROM pendaftaran
+		$sql = "SELECT * FROM pendaftaran2
 				WHERE nomor_daftar = '$nomor_daftar' ";
 		$data = $this->db->query($sql);
 		return $data->result();
@@ -58,10 +58,10 @@ class M_riwayat_pembayaran_psb extends CI_Model {
 
 	public function select_pendaftaran($id) 
 	{
-		$sql = "SELECT * FROM pendaftaran
-				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran.id_unit_pendidikan
-				WHERE pendaftaran.id_unit_pendidikan = '$id' 
-				ORDER BY pendaftaran.nomor_daftar ASC";
+		$sql = "SELECT * FROM pendaftaran2
+				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran2.id_unit_pendidikan
+				WHERE pendaftaran2.id_unit_pendidikan = '$id' 
+				ORDER BY pendaftaran2.nomor_daftar ASC";
 		$data = $this->db->query($sql);
 		return $data->result();
 	}
@@ -80,7 +80,7 @@ class M_riwayat_pembayaran_psb extends CI_Model {
 	
 	public function select_all_detail_pendaftaran1($nomor_daftar) 
 	{
-		$sql = "SELECT * FROM pendaftaran
+		$sql = "SELECT * FROM pendaftaran2
 				WHERE nomor_daftar = '$nomor_daftar' ";
 		$data = $this->db->query($sql);
 		return $data->result();

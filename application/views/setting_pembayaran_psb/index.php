@@ -15,6 +15,7 @@
           <th>No</th>
           <th>Tahun Pelajaran</th>
           <th>Tipe Pembayaran</th>
+          <th>Jenis Kelamin</th>
           <th>Nominal</th>
           <th style="text-align: center;">Aksi</th>
         </tr>
@@ -28,6 +29,7 @@
           <td><?php echo $no++; ?></td>
           <td><?php echo $k->tahun_ajaran; ?></td>
           <td><?php echo $k->tipe_pembayaran; ?></td>
+          <td><?php echo $k->jenis_kelamin; ?></td>
           <td>Rp. <?php echo number_format($k->nominal,'2',',','.'); ?></td>
           <td class="text-center" style="min-width:230px;">
             <!-- <a href="<?php echo base_url(); ?>setting_pembayaran_psb/detail/<?php echo $k->id_setting_pembayaran_psb; ?>">

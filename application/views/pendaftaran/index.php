@@ -18,6 +18,7 @@
           <th>Nama Lengkap</th>
           <th>Tempat Lahir</th>
           <th>Tanggal Lahir</th>
+          <th>Jenis Kelamin</th>
           <th>Nama Orang Tua/Wali</th>
           <th>Alamat</th>
           <th>Sekolah Asal</th>
@@ -49,6 +50,7 @@
               echo $datanew->format('d F Y'); 
             ?>
           </td>
+          <td><?php echo $k->jenis_kelamin; ?></td>
           <td><?php echo $k->nama_ortu; ?></td>
           <td><?php echo $k->alamat; ?></td>
           <td><?php echo $k->sekolah_asal; ?></td>

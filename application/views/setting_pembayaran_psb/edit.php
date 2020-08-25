@@ -33,7 +33,7 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <?php foreach($setting_pembayaran as $k){ ?>
+  <?php foreach($setting_pembayaran_psb as $k){ ?>
   <form role="form" action="<?php echo base_url(); ?>setting_pembayaran_psb/update" method="POST" onsubmit="return cekform();">
     <div class="box-body">
       <input type="hidden" class="form-control" name="id_setting_pembayaran_psb" id="id_setting_pembayaran_psb" placeholder="Enter ID" value="<?php echo $k->id_setting_pembayaran_psb; ?>">
@@ -55,6 +55,25 @@
           <?php } ?>
         </select>
       </div>
+     <div class="form-group">
+        <label for="exampleInputNama">Jenis Kelamin<b style="color: red;">*</b></label>
+        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
+          <option value="<?= $k->jenis_kelamin; ?>" > <?= $k->jenis_kelamin; ?></option>
+          <?php if ($k->jenis_kelamin == 'Laki-Laki') : ?>
+            <option value="All"> All </option>
+            <option value="Perempuan"> Perempuan </option>
+          <?php endif; ?>
+          <?php if ($k->jenis_kelamin == 'Perempuan') : ?>
+            <option value="All"> All </option>
+            <option value="Laki-Laki"> Laki-Laki </option>
+          <?php endif; ?>
+          <?php if ($k->jenis_kelamin == 'All') : ?>
+            <option value="Perempuan"> Perempuan </option>
+            <option value="Laki-Laki"> Laki-Laki </option>
+          <?php endif; ?>
+
+        </select>
+      </div>
       <div class="form-group">
         <label for="exampleInputNama">Nominal <b style="color: red;">* Nominal tidak perlu di input jika tipe pembayaran nya tidak memiliki nominal</b></label>
         <input type="text" class="form-control" name="nominal" placeholder="Nominal" value="<?php echo $k->nominal; ?>">
@@ -69,4 +88,6 @@
   </form>
   <?php } ?>
 </div>
+
+
 <!-- /.box -->

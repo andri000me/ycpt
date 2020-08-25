@@ -91,7 +91,7 @@
 
               $query = $this->db->query("SELECT a.*, SUM(a.nominal) AS TOTAL from detail_pembayaran_psb a
                                          LEFT JOIN pembayaran_psb b on b.id_pembayaran_psb = a.id_pembayaran_psb
-                                         LEFT JOIN pendaftaran c on c.id_daftar = b.id_daftar
+                                         LEFT JOIN pendaftaran2 c on c.id_daftar = b.id_daftar
                                          LEFT JOIN setting_pembayaran_psb d on d.id_setting_pembayaran_psb = a.id_setting_pembayaran_psb
                                          LEFT JOIN tipe_pembayaran e on e.id_tipe_pembayaran = d.id_tipe_pembayaran
                                          WHERE c.nomor_daftar = '$nomor_daftar' and e.id_tipe_pembayaran = '$id_tipe_pembayaran'");

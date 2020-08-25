@@ -8,6 +8,7 @@ class Pembayaran extends AUTH_Controller {
 
 		parent::__construct();
 		$this->load->model('M_pembayaran');
+		$this->load->library('session');
 
 	}
 
@@ -51,6 +52,7 @@ class Pembayaran extends AUTH_Controller {
 	public function add($id_kelas_siswa_detail) 
 	{
 
+
 		$data['userdata']		= $this->userdata;
 		$id 					= $this->userdata->id_user;
 		$id_kelas_siswa_detail	= $id_kelas_siswa_detail;
@@ -76,7 +78,8 @@ class Pembayaran extends AUTH_Controller {
 			'id_kelas_siswa_detail'	=> $this->input->post('id_kelas_siswa_detail')
 
 		);
-
+		$id_tipe_kelas = $this->input->post('id_tipe_kelas');
+		$this->session->set_userdata('id_tipe_kelas',$id_tipe_kelas);
 		$id_pembayaran = $this->input->post('id_pembayaran');
 		$this->M_pembayaran->insert($data);
 		$this->session->set_flashdata('msg', show_succ_msg('Data Berhasil disimpan'));
@@ -86,12 +89,12 @@ class Pembayaran extends AUTH_Controller {
 
 	function detail($id_pembayaran)
 	{
+
 		$data['userdata']	= $this->userdata;
 		$id 				= $this->userdata->id_user;
 		$data['page'] 		= "Pembayaran";
 		$data['judul'] 		= "Pembayaran";
-		$data['deskripsi'] 	= "Manage Data Pembayaran";
-
+		$data['deskripsi'] 	= "Manage Data Pembayaran";	
 		$data['pembayaran'] 		= $this->M_pembayaran->select_all_pembayaran_detail($id_pembayaran);
 		$data['setting_pembayaran'] = $this->M_pembayaran->select_all_setting_pembayaran($id);
 		$data['detail_pembayaran'] 	= $this->M_pembayaran->select_all_detail_pembayaran($id_pembayaran);

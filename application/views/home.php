@@ -209,8 +209,8 @@
                     <div class="inner">
                       <?php 
                         $id     = $this->userdata->id_user;
-                        $query  = $this->db->query("SELECT * FROM pendaftaran 
-                                                    LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran.id_unit_pendidikan
+                        $query  = $this->db->query("SELECT * FROM pendaftaran2 
+                                                    LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran2.id_unit_pendidikan
                                                     LEFT JOIN user ON user.id_unit_pendidikan = unit_pendidikan.id_unit_pendidikan
                                                     WHERE user.id_user = '$id'");
                       ?>

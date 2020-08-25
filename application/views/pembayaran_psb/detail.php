@@ -47,6 +47,10 @@
 	                                	<td>Tempat Lahir</td>
 	                                   	<td><?php echo $m->tempat_lahir; ?></td>
 	                                </tr>
+	                                </tr>
+	                                	<td>Jenis Kelamin</td>
+	                                   	<td><?php echo $m->jenis_kelamin; ?></td>
+	                                </tr>
 	                                <tr>
 	                                	<td>Nama Orang Tua / Wali</td>
 	                                   	<td><?php echo $m->nama_ortu; ?></td>
@@ -78,7 +82,20 @@
 						        <select class="form-control select2" name="id_setting_pembayaran_psb" id="id_setting_pembayaran_psb" data-placeholder="Select Please">
 						          <?php foreach ($setting_pembayaran_psb as $s) { ?>
 						            <option></option>
-						            <option value="<?php echo $s->id_setting_pembayaran_psb; ?>" >Tahun Pelajaran : <?php echo $s->tahun_ajaran; ?> || Tipe Pembayaran : <?php echo $s->tipe_pembayaran; ?> || Nominal Yang Harus Dibayar : Rp. <?php echo number_format($s->nominal,'2',',','.'); ?></option>
+
+									<?php if($m->jenis_kelamin == 'Laki-Laki') {  ?>
+										
+										<?php if($s->jenis_kelamin == 'Laki-Laki' || $s->jenis_kelamin == 'All') { ?>
+											 <option value="<?php echo $s->id_setting_pembayaran_psb; ?>" >Tahun Pelajaran : <?php echo $s->tahun_ajaran; ?> || Tipe Pembayaran : <?php echo $s->tipe_pembayaran; ?> || Nominal Yang Harus Dibayar : Rp. <?php echo number_format($s->nominal,'2',',','.'); ?></option>
+										<?php }?>
+
+									<?php } else if($m->jenis_kelamin == 'Perempuan') { ?>
+										
+										<?php if($s->jenis_kelamin == 'Perempuan' || $s->jenis_kelamin == 'All') { ?>
+											 <option value="<?php echo $s->id_setting_pembayaran_psb; ?>" >Tahun Pelajaran : <?php echo $s->tahun_ajaran; ?> || Tipe Pembayaran : <?php echo $s->tipe_pembayaran; ?> || Nominal Yang Harus Dibayar : Rp. <?php echo number_format($s->nominal,'2',',','.'); ?></option>
+										<?php }?>
+
+									<?php } ?>
 						          <?php } ?>
 						        </select>
 						    </div>

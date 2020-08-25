@@ -1,15 +1,14 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-class Admin extends AUTH_Controller
-{
+defined('BASEPATH') OR exit('No direct script access allowed');
+class Admin extends AUTH_Controller {
 
-	public function __construct()
+	public function __construct() 
 	{
 		parent::__construct();
 		$this->load->model('M_admin');
 	}
 
-	public function index()
+	public function index() 
 	{
 		$data['userdata'] 	= $this->userdata;
 		$data['dataAdmin'] 	= $this->M_admin->select_all_admin();
@@ -19,7 +18,7 @@ class Admin extends AUTH_Controller
 		$this->template->views('admin/index', $data);
 	}
 
-	public function add()
+	public function add() 
 	{
 		$data['userdata']	= $this->userdata;
 		$data['page'] 		= "admin";
@@ -37,7 +36,7 @@ class Admin extends AUTH_Controller
 			'password'	=> md5($this->input->post('password'))
 			// 'foto'		=> $this->input->post('foto')
 		);
-
+	
 		$this->M_admin->insert($data);
 		redirect('admin/index');
 	}
@@ -49,8 +48,8 @@ class Admin extends AUTH_Controller
 		$data['judul'] 		= "Data Master";
 		$data['deskripsi'] 	= "Manage Data Admin";
 		$where = array('id' => $id);
-		$data['admin'] = $this->M_admin->edit_data($where, 'admin')->result();
-		$this->template->views('admin/form_edit', $data);
+		$data['admin'] = $this->M_admin->edit_data($where,'admin')->result();
+		$this->template->views('admin/form_edit',$data);
 	}
 
 	function update()
@@ -69,15 +68,16 @@ class Admin extends AUTH_Controller
 			'id' => $id
 		);
 
-
-		$this->M_admin->update_data($where, $data, 'admin');
+	 
+		$this->M_admin->update_data($where,$data,'admin');
 		redirect('admin/index');
 	}
 
-	public function delete($id)
+	public function delete($id) 
 	{
-		$data = array('id' => $id);
-		$this->M_admin->delete($data, 'admin');
+
+	$data = array('id' => $id);
+		$this->M_admin->delete($data,'admin');
 		redirect('admin/index');
 	}
 }

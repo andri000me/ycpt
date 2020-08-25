@@ -24,6 +24,10 @@
 	                                	<td>Nama Siswa</td>
 	                                   	<td><?php echo $m->nama_siswa; ?></td>
 	                                </tr>
+	                                 </tr>
+	                                	<td>Kelas</td>
+	                                   	<td><?php echo $m->nama_tipe_kelas; ?> <?php echo $m->kelas; ?></td>
+	                                </tr>
 	                              	<tr>
 	                                	<td>Tanggal Lahir</td>
 	                                   	<td>
@@ -67,8 +71,10 @@
 						        <label for="exampleInputNama">Setting Pembayaran <b style="color: red;">*</b></label>
 						        <select class="form-control select2" name="id_setting_pembayaran" id="id_setting_pembayaran" data-placeholder="Select Please">
 						          <?php foreach ($setting_pembayaran as $s) { ?>
+						          	<?php if($s->id_tipe_kelas == $m->id_tipe_kelas) { ?>
 						            <option></option>
-						            <option value="<?php echo $s->id_setting_pembayaran; ?>" >Tahun Ajaran : <?php echo $s->tahun_ajaran; ?> || Tipe Pembayaran : <?php echo $s->tipe_pembayaran; ?> || Nominal Yang Harus Dibayar : Rp. <?php echo number_format($s->nominal,'2',',','.'); ?></option>
+						            <option value="<?php echo $s->id_setting_pembayaran; ?>" >Tahun Ajaran : <?php echo $s->tahun_ajaran; ?> || Tipe Pembayaran : <?php echo $s->tipe_pembayaran; ?> || Nominal Yang Harus Dibayar : Rp. <?php echo number_format($s->nominal,'2',',','.'); ?> </option>
+						            <?php } ?>
 						          <?php } ?>
 						        </select>
 						    </div>

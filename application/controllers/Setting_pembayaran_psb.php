@@ -47,7 +47,8 @@ class Setting_pembayaran_psb extends AUTH_Controller {
 			'id_tahun_ajaran'		=> $this->input->post('id_tahun_ajaran'),
 			'id_tipe_pembayaran'	=> $this->input->post('id_tipe_pembayaran'),
 			'nominal'				=> $this->input->post('nominal'),
-			'id_unit_pendidikan'	=> $this->input->post('id_unit_pendidikan')
+			'id_unit_pendidikan'	=> $this->input->post('id_unit_pendidikan'),
+			'jenis_kelamin'	=> $this->input->post('jenis_kelamin')
 
 		);
 
@@ -88,7 +89,8 @@ class Setting_pembayaran_psb extends AUTH_Controller {
 			'id_tahun_ajaran' 		=> $id_tahun_ajaran,
 			'id_tipe_pembayaran' 	=> $id_tipe_pembayaran,
 			'nominal' 				=> $nominal,
-			'id_unit_pendidikan' 	=> $id_unit_pendidikan
+			'id_unit_pendidikan' 	=> $id_unit_pendidikan,
+			'jenis_kelamin'			=> $this->input->post('jenis_kelamin')
 
 		);
 

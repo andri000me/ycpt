@@ -5,11 +5,11 @@ class M_pendaftaran extends CI_Model {
 
 	public function select_all_pendaftaran($id) 
 	{
-		$sql = "SELECT * FROM pendaftaran
-				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran.id_unit_pendidikan
+		$sql = "SELECT * FROM pendaftaran2
+				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran2.id_unit_pendidikan
 				LEFT JOIN user ON user.id_unit_pendidikan = unit_pendidikan.id_unit_pendidikan
 				WHERE user.id_user = '$id'
-				ORDER BY pendaftaran.id_daftar DESC";
+				ORDER BY pendaftaran2.id_daftar DESC";
 		$data = $this->db->query($sql);
 		return $data->result();
 	}
@@ -33,7 +33,7 @@ class M_pendaftaran extends CI_Model {
 
 	public function insert($data)
 	{
-		$this->db->insert('pendaftaran',$data);
+		$this->db->insert('pendaftaran2',$data);
 	}
 
 	public function insert_siswa($data_siswa)
@@ -64,10 +64,10 @@ class M_pendaftaran extends CI_Model {
 	}
 
 	public function buat_kode()   {
-		  $this->db->select('RIGHT(pendaftaran.nomor_daftar,5) as kode', FALSE);
+		  $this->db->select('RIGHT(pendaftaran2.nomor_daftar,5) as kode', FALSE);
 		  $this->db->order_by('nomor_daftar','DESC');    
 		  $this->db->limit(1);    
-		  $query = $this->db->get('pendaftaran');      //cek dulu apakah ada sudah ada kode di tabel.    
+		  $query = $this->db->get('pendaftaran2');      //cek dulu apakah ada sudah ada kode di tabel.    
 		  if($query->num_rows() <> 0){      
 		   //jika kode ternyata sudah ada.      
 		   $data = $query->row();      

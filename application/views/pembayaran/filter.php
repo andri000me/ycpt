@@ -11,7 +11,7 @@
             <select class="form-control select2" name="id_kelas_siswa" id="id_kelas_siswa" data-placeholder="Select Please">
               <?php foreach ($kelas as $s) { ?>
               <option></option>
-              <option value="<?php echo $s->id_kelas_siswa; ?>" ><?php echo $s->tahun_ajaran; ?> - <?php echo $s->kelas; ?></option>
+              <option value="<?php echo $s->id_kelas_siswa; ?>" ><?php echo $s->tahun_ajaran; ?> - <?php echo $s->nama_tipe_kelas; ?> <?php echo $s->kelas; ?></option>
               <?php } ?>
             </select>
           </div>

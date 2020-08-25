@@ -1,5 +1,5 @@
-define( function() {
-	"use strict";
-
-	return ( /^margin/ );
-} );
+define( function() {
+	"use strict";
+
+	return ( /^margin/ );
+} );

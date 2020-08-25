@@ -1,17 +1,17 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Siswa extends AUTH_Controller {
+class Siswa extends AUTH_Controller
+{
 
-	public function __construct() 
+	public function __construct()
 	{
 
 		parent::__construct();
 		$this->load->model('M_siswa');
-
 	}
 
-	public function index() 
+	public function index()
 	{
 
 		$data['userdata'] 	= $this->userdata;
@@ -22,10 +22,9 @@ class Siswa extends AUTH_Controller {
 		$data['unit_pendidikan'] = $this->M_siswa->select_all_unit_pendidikan($id);
 		$data['siswa'] 		= $this->M_siswa->select_all_siswa($id);
 		$this->template->views('siswa/index', $data);
-
 	}
 
-	public function index_siswa() 
+	public function index_siswa()
 	{
 
 		$data['userdata'] 	= $this->userdata;
@@ -35,7 +34,6 @@ class Siswa extends AUTH_Controller {
 		$data['deskripsi'] 	= "Manage Data Siswa";
 		$data['unit_pendidikan'] = $this->M_siswa->select_unit_pendidikan();
 		$this->template->views('siswa/index_siswa', $data);
-
 	}
 
 	function siswa_detail($id)
@@ -48,10 +46,10 @@ class Siswa extends AUTH_Controller {
 
 		$data['siswa'] 		= $this->M_siswa->select_siswa($id);
 		$data['unit_pendidikan_siswa'] = $this->M_siswa->select_unit_pendidikan_siswa($id);
-		$this->template->views('siswa/detail_siswa',$data);
+		$this->template->views('siswa/detail_siswa', $data);
 	}
 
-	public function add() 
+	public function add()
 	{
 
 		$data['userdata']	= $this->userdata;
@@ -61,7 +59,6 @@ class Siswa extends AUTH_Controller {
 		$data['deskripsi'] 	= "Manage Data Siswa";
 		$data['unit_pendidikan'] = $this->M_siswa->select_all_unit_pendidikan($id);
 		$this->template->views('siswa/add', $data);
-
 	}
 
 	public function save()
@@ -75,7 +72,8 @@ class Siswa extends AUTH_Controller {
 			'tanggal_lahir'		=> $this->input->post('tanggal_lahir'),
 			'nama_ortu'			=> $this->input->post('nama_ortu'),
 			'alamat'			=> $this->input->post('alamat'),
-			'id_unit_pendidikan'=> $this->input->post('id_unit_pendidikan'),
+			'id_unit_pendidikan' => $this->input->post('id_unit_pendidikan'),
+			'jenis_kelamin' 	=> $this->input->post('jenis_kelamin'),
 			'status'			=> $this->input->post('status')
 
 		);
@@ -83,7 +81,6 @@ class Siswa extends AUTH_Controller {
 		$this->M_siswa->insert($data);
 		$this->session->set_flashdata('msg', show_succ_msg('Data Berhasil disimpan'));
 		redirect('siswa/index');
-
 	}
 
 	function edit($id)
@@ -96,9 +93,8 @@ class Siswa extends AUTH_Controller {
 		$data['deskripsi'] 	= "Manage Data Siswa";
 
 		$where 				= array('id_siswa' => $id);
-		$data['siswa'] 		= $this->M_siswa->edit_data($where,'siswa')->result();
-		$this->template->views('siswa/edit',$data);
-
+		$data['siswa'] 		= $this->M_siswa->edit_data($where, 'siswa')->result();
+		$this->template->views('siswa/edit', $data);
 	}
 
 	function update()
@@ -113,6 +109,7 @@ class Siswa extends AUTH_Controller {
 		$alamat				= $this->input->post('alamat');
 		$id_unit_pendidikan	= $this->input->post('id_unit_pendidikan');
 		$status				= $this->input->post('status');
+		$jenis_kelamin			= $this->input->post('jenis_kelamin');
 
 		$data = array(
 
@@ -123,6 +120,7 @@ class Siswa extends AUTH_Controller {
 			'nama_ortu' 			=> $nama_ortu,
 			'alamat' 				=> $alamat,
 			'id_unit_pendidikan' 	=> $id_unit_pendidikan,
+			'jenis_kelamin' 	=> $jenis_kelamin,
 			'status' 				=> $status
 
 		);
@@ -133,19 +131,17 @@ class Siswa extends AUTH_Controller {
 
 		);
 
-		$this->M_siswa->update_data($where,$data,'siswa');
+		$this->M_siswa->update_data($where, $data, 'siswa');
 		$this->session->set_flashdata('msg', show_succ_msg('Data Berhasil diubah'));
 		redirect('siswa/index');
-
 	}
 
-	public function delete($id) 
+	public function delete($id)
 	{
 
 		$data = array('id_siswa' => $id);
-		$this->M_siswa->delete($data,'siswa');
+		$this->M_siswa->delete($data, 'siswa');
 		$this->session->set_flashdata('msg', show_succ_msg('Data Berhasil dihapus'));
 		redirect('siswa/index');
-
 	}
 }

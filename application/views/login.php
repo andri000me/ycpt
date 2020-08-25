@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,9 +19,8 @@
     <link href="<?php echo base_url(); ?>asset/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 </head>
-
 <body>
-
+    
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center">
@@ -34,23 +32,18 @@
                             <img class="reponsive" width="100%" height="100%" src="<?php echo base_url(); ?>asset/img/logo.gif">
                         </div>
                         <div class="modal-body">
-                            <?= $this->session->flashdata('error_msg'); ?>
-                            <form action="<?php echo base_url('Auth'); ?>" onsubmit="return cekform();" name="modal_popup" enctype="multipart/form-data" method="POST">
+                            <form action="<?php echo base_url('Auth/login'); ?>" onsubmit="return cekform();" name="modal_popup" enctype="multipart/form-data" method="POST">
                                 <div class="form-group" style="padding-bottom: 20px;" align="center">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="<?= set_value('username') ?>" />
-                                    </div>
-                                    <?= form_error('username', '<span class="text-danger">', '</span>') ?>
-                                    <br>
+                                    <input type="text" name="username" id="username"  class="form-control" placeholder="Username" required/>
+                                    </div><br>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input type="Password" name="password" id="password" class="form-control" placeholder="Password" />
-                                    </div>
-                                    <?= form_error('password', '<span class="ml-3 text-danger">', '</span>') ?>
-                                    <br>
+                                        <input type="Password" name="password" id="password" class="form-control" placeholder="Password" required/>
+                                    </div><br>
                                     <div class="input-group">
-                                        <select class="form-control select2" name="level">
+                                        <select class="form-control select2" name="level" >
                                             <option value="1">User</option>
                                             <option value="0">Administrator</option>
                                         </select>
@@ -59,7 +52,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-success" type="submit">
-                                        <i class="glyphicon glyphicon-log-in"></i> Login
+                                    <i class="glyphicon glyphicon-log-in"></i> Login
                                     </button>
                                     <!-- <button type="reset" class="btn btn-danger"  data-dismiss="modal" aria-hidden="true">
                                     Cancel
@@ -67,14 +60,13 @@
                                 </div>
                                 <div>
                                     <p>
-                                        Ketentuan Login :<br>
-                                        <hr>
+                                        Ketentuan Login :<br><hr>
                                         Pastikan Username dan Password benar<br>
                                         Pastikan Anda sudah terdaftar sebagai pengguna.
                                     </p>
                                 </div>
                             </form>
-                        </div>
+                        </div>   
                     </div>
                 </div>
             </div>
@@ -86,7 +78,6 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>asset/js/bootstrap.min.js"></script>
     <!-- Custom Theme JavaScript -->
-
+    
 </body>
-
 </html>

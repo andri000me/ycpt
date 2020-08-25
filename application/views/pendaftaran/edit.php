@@ -37,6 +37,11 @@
       $("#sekolah_asal").focus()
       return false;
     }
+    if (!$("#jenis_kelamin").val()) {
+      alert('Jenis Kelamin Tidak boleh kosong');
+      $("#jenis_kelamin").focus()
+      return false;
+    }
   }
 </script>
 <div class="box box-primary">
@@ -79,6 +84,22 @@
           <input type="text" name="tanggal_lahir" value="<?php echo $k->tanggal_lahir; ?>" class="form-control pull-right" id="datepicker">
         </div>
       </div>
+      <div class="form-group">
+          <label for="exampleInputNama">Jenis Kelamin <b style="color: red;">*</b></label>
+          <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
+            <option value="<?= $k->jenis_kelamin ?>"> <?= $k->jenis_kelamin ?></option>
+            <?php if ($k->jenis_kelamin == 'Laki-Laki') :  ?>
+              <option value="Perempuan"> Perempuan</option>
+            <?php endif; ?>
+            <?php if ($k->jenis_kelamin == 'Perempuan') :  ?>
+              <option value="Laki-Laki"> Laki-Laki</option>
+            <?php endif; ?>
+            <?php if ($k->jenis_kelamin == '') :  ?>
+              <option value="Perempuan"> Perempuan</option>
+              <option value="Laki-Laki"> Laki-Laki</option>
+            <?php endif; ?>
+          </select>
+        </div>
       <div class="form-group">
         <label for="exampleInputNama">Nama Orang Tua / Wali <b style="color: red;">*</b></label>
         <input type="text" class="form-control" name="nama_ortu" id="nama_ortu" placeholder="Nama Orang Tua / Wali" value="<?php echo $k->nama_ortu; ?>">

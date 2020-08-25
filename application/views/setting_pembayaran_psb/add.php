@@ -25,6 +25,13 @@
       $("#id_unit_pendidikan").focus()
       return false;
     }
+    if (!$("#jenis_kelamin").val()) 
+    {
+      alert('Jenis Kelamin Tidak boleh kosong');
+      $("#jenis_kelamin").focus()
+      return false;
+    }
+
   }
 </script>
 <div class="box box-primary">
@@ -51,9 +58,18 @@
           <?php } ?>
         </select>
       </div>
+       <div class="form-group">
+        <label for="jenis_kelamin">Jenis Kelamin<b style="color: red;">*</b></label>
+        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin" data-placeholder="Select Jenis Kelamin">
+          <option>Select Jenis Kelamin</option>
+          <option value="All">All</option>
+          <option value="Laki-Laki">Laki-Laki</option>
+          <option value="Perempuan">Perempuan</option>
+        </select>
+      </div>
       <div class="form-group">
         <label for="exampleInputNama">Nominal <b style="color: red;">*</b></label>
-        <input type="text" class="form-control" name="nominal" placeholder="Nominal">
+        <input type="text" class="form-control" name="nominal" id="nominal" placeholder="Nominal">  
       </div>
       <?php foreach ($user as $s) { }?>
       <input type="hidden" class="form-control" name="id_unit_pendidikan" value="<?php echo $s->id_unit_pendidikan; ?>" id="id_unit_pendidikan" placeholder="Unit Pendidikan">

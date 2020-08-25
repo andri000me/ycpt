@@ -54,12 +54,7 @@
         </tr>
       </thead>
       <tbody>
-        <?php 
-        $no = 1; 
-        $totalnominal = 0;
-        foreach ($pembayaran as $k) { 
-        $totalnominal += $k->nominal;
-        ?>
+        <?php $no = 1; foreach ($pembayaran as $k) { ?>
         <tr>
           <td><?php echo $no++; ?></td>
           <td>
@@ -80,9 +75,9 @@
         </tr>
       <?php } ?>
       <tr>
-        <?php //foreach ($pembayaran1 as $k1) { } ?>
+        <?php foreach ($pembayaran1 as $k1) { } ?>
         <td colspan="5"><b>JUMLAH</b></td>
-        <td><b>Rp. <?php echo number_format($totalnominal,'2',',','.'); ?></b></td>
+        <td><b>Rp. <?php echo number_format($k1->TOTAL,'2',',','.'); ?></b></td>
       </tr>
       </tbody>
     </table>

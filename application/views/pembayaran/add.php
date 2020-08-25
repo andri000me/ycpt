@@ -33,6 +33,8 @@
       <?php } else { ?>
       <input type="hidden" class="form-control" value="<?php echo $hasil; ?>" name="id_pembayaran" placeholder="ID">
       <?php } ?>
+
+
       <div class="form-group">
         <label>Tanggal <b style="color: red;">*</b></label>
         <div class="input-group date">
@@ -43,10 +45,17 @@
         </div>
       </div>
       <?php foreach ($siswa as $s) { } ?>
+      <input type="hidden" name="id_tipe_kelas" value="<?= $s->id_tipe_kelas; ?>">
       <div class="form-group">
-        <label for="Tahun Ajaran">Tahun Pelajaran<b style="color: red;">*</b></label>
-        <input type="text" class="form-control" value="<?php echo $s->tahun_ajaran; ?>" placeholder="Tahun Pelajaran">
-        <input type="hidden" class="form-control" value="<?php echo $s->id_tahun_ajaran; ?>" name="id_tahun_ajaran" id="id_tahun_ajaran" placeholder="Tahun Pelajaran">
+        <label for="exampleInputNama">Tahun Pelajaran<b style="color: red;">*</b></label>
+          <select class="form-control select2" name="id_tahun_ajaran" id="id_tahun_ajaran" data-placeholder="Select Tahun Ajaran">
+            <option></option>
+            <?php foreach ($tahun_ajaran as $j) { ?>
+              <option value="<?php echo $j->id_tahun_ajaran; ?>" <?php if ($j->id_tahun_ajaran == $s->id_tahun_ajaran) {
+                                                                    echo "selected='selected'";
+                                                                  } ?>><?php echo $j->tahun_ajaran; ?></option>
+            <?php } ?>
+          </select>
       </div>
       <div class="form-group">
         <label for="Nama Siswa">NIS / Nama Siswa<b style="color: red;">*</b></label>

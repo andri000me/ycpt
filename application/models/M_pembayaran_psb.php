@@ -13,11 +13,11 @@ class M_pembayaran_psb extends CI_Model {
 
 	public function select_all_pendaftaran($id) 
 	{
-		$sql = "SELECT * FROM pendaftaran
-				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran.id_unit_pendidikan
+		$sql = "SELECT * FROM pendaftaran2
+				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran2.id_unit_pendidikan
 				LEFT JOIN user ON user.id_unit_pendidikan = unit_pendidikan.id_unit_pendidikan
 				WHERE user.id_user = '$id' 
-				ORDER BY pendaftaran.nomor_daftar ASC";
+				ORDER BY pendaftaran2.nomor_daftar ASC";
 		$data = $this->db->query($sql);
 		return $data->result();
 	}
@@ -40,10 +40,10 @@ class M_pembayaran_psb extends CI_Model {
 
 	public function select_all_pembayaran_psb($id) 
 	{
-		$sql = "SELECT pembayaran_psb.*, pembayaran_psb.tanggal, tahun_ajaran.tahun_ajaran, pendaftaran.nomor_daftar, pendaftaran.nama_lengkap, unit_pendidikan.unit_pendidikan, unit_pendidikan.alamat_sekolah FROM pembayaran_psb
+		$sql = "SELECT pembayaran_psb.*, pembayaran_psb.tanggal, tahun_ajaran.tahun_ajaran, pendaftaran2.nomor_daftar, pendaftaran2.nama_lengkap, unit_pendidikan.unit_pendidikan, unit_pendidikan.alamat_sekolah FROM pembayaran_psb
 				LEFT JOIN tahun_ajaran ON tahun_ajaran.id_tahun_ajaran = pembayaran_psb.id_tahun_ajaran
-				LEFT JOIN pendaftaran ON pendaftaran.id_daftar = pembayaran_psb.id_daftar
-				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran.id_unit_pendidikan
+				LEFT JOIN pendaftaran2 ON pendaftaran2.id_daftar = pembayaran_psb.id_daftar
+				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = pendaftaran2.id_unit_pendidikan
 				LEFT JOIN user ON user.id_unit_pendidikan = unit_pendidikan.id_unit_pendidikan
 				WHERE user.id_user = '$id'
 				ORDER BY pembayaran_psb.id_pembayaran_psb DESC";
@@ -53,9 +53,9 @@ class M_pembayaran_psb extends CI_Model {
 
 	public function select_all_pembayaran_detail($id_pembayaran_psb) 
 	{
-		$sql = "SELECT pembayaran_psb.*, pembayaran_psb.id_pembayaran_psb, pembayaran_psb.tanggal, tahun_ajaran.tahun_ajaran, pendaftaran.nomor_daftar, pendaftaran.tanggal_daftar, pendaftaran.nama_lengkap, pendaftaran.tempat_lahir, pendaftaran.tanggal_lahir, pendaftaran.nama_ortu, pendaftaran.alamat FROM pembayaran_psb
+		$sql = "SELECT pembayaran_psb.*, pembayaran_psb.id_pembayaran_psb, pembayaran_psb.tanggal, tahun_ajaran.tahun_ajaran, pendaftaran2.nomor_daftar, pendaftaran2.tanggal_daftar, pendaftaran2.nama_lengkap, pendaftaran2.tempat_lahir, pendaftaran2.tanggal_lahir, pendaftaran2.nama_ortu, pendaftaran2.alamat, pendaftaran2.jenis_kelamin FROM pembayaran_psb
 				LEFT JOIN tahun_ajaran ON tahun_ajaran.id_tahun_ajaran = pembayaran_psb.id_tahun_ajaran
-				LEFT JOIN pendaftaran ON pendaftaran.id_daftar = pembayaran_psb.id_daftar
+				LEFT JOIN pendaftaran2 ON pendaftaran2.id_daftar = pembayaran_psb.id_daftar
 				WHERE pembayaran_psb.id_pembayaran_psb = '$id_pembayaran_psb'";
 		$data = $this->db->query($sql);
 		return $data->result();
@@ -63,6 +63,7 @@ class M_pembayaran_psb extends CI_Model {
 
 	public function select_all_setting_pembayaran_psb($id) 
 	{
+
 		$sql = "SELECT * FROM setting_pembayaran_psb 
 				LEFT JOIN tahun_ajaran ON tahun_ajaran.id_tahun_ajaran = setting_pembayaran_psb.id_tahun_ajaran
 				LEFT JOIN tipe_pembayaran ON tipe_pembayaran.id_tipe_pembayaran = setting_pembayaran_psb.id_tipe_pembayaran

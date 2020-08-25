@@ -1,5 +1,5 @@
-(function() {
-
-module('DOM');
-
+(function() {
+
+module('DOM');
+
 })();
