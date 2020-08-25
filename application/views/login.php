@@ -34,19 +34,21 @@
                             <img class="reponsive" width="100%" height="100%" src="<?php echo base_url(); ?>asset/img/logo.gif">
                         </div>
                         <div class="modal-body">
-                            <?= $this->session->flashdata('message'); ?>
+                            <?= $this->session->flashdata('error_msg'); ?>
                             <form action="<?php echo base_url('Auth'); ?>" onsubmit="return cekform();" name="modal_popup" enctype="multipart/form-data" method="POST">
                                 <div class="form-group" style="padding-bottom: 20px;" align="center">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" />
-                                    </div><br>
-                                    <?= form_error('username', '<span class="ml-3 text-danger">', '</span>') ?>
+                                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="<?= set_value('username') ?>" />
+                                    </div>
+                                    <?= form_error('username', '<span class="text-danger">', '</span>') ?>
+                                    <br>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                         <input type="Password" name="password" id="password" class="form-control" placeholder="Password" />
-                                    </div><br>
+                                    </div>
                                     <?= form_error('password', '<span class="ml-3 text-danger">', '</span>') ?>
+                                    <br>
                                     <div class="input-group">
                                         <select class="form-control select2" name="level">
                                             <option value="1">User</option>

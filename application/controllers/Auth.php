@@ -11,29 +11,27 @@ class Auth extends CI_Controller
 
 	public function index()
 	{
-		$session = $this->session->userdata('status');
-
 		$this->form_validation->set_rules('username', 'username', 'required|min_length[4]|max_length[50]');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('login');
 		} else {
-			$username 	= trim($_POST['username']);
-			$password 	= trim($_POST['password']);
-			$level 		= trim($_POST['level']);
+			$username 	= $this->input->post('username', 'trim');
+			$password 	= $this->input->post('password', 'trim');
+			$level 		= $this->input->post('level');
 
-			$data = $this->M_auth->login($username, $password, $level);
-
-			if ($data == false) {
-				// echo "salah";
-				$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissable"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>  Username atau Password Salah!.</div>');
-
-
-				// echo $this->session->flashdata('message');
-				// $this->session->set_flashdata('error_msg', '<div class="alert alert-danger alert-dismissable"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>  Username atau Password Salah!.</div>');
-				redirect('Auth');
+			// $data = $this->M_auth->login($username, $password, $level);
+			if ($level == 0) {
+				$data = $this->db->get_where('admin', ['username' => $username, 'password' => $password])->row_array();
 			} else {
+				$data = $this->db->get_where('user', ['username' => $username, 'password' => $password])->row();
+			}
+
+			var_dump($data);
+			die;
+
+			if ($data) {
 				$session = [
 					'userdata' 	=> $data,
 					'status' 	=> "Loged in",
@@ -41,6 +39,13 @@ class Auth extends CI_Controller
 				];
 				$this->session->set_userdata($session);
 				redirect('Home');
+			} else {
+				$this->session->set_flashdata('error_msg', '<div class="alert alert-danger alert-dismissable"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>  Username atau Password Salah!.</div>');
+
+
+				// echo $this->session->flashdata('error_msg');
+				// $this->session->set_flashdata('error_msg', '<div class="alert alert-danger alert-dismissable"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>  Username atau Password Salah!.</div>');
+				redirect('auth');
 			}
 		}
 	}
