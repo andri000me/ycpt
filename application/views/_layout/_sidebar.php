@@ -305,12 +305,20 @@
                 <span>Pembayaran / Hari</span>
               </a>
             </li>
-            <li <?php if ($page == 'lapora_penerimaan_uang') {
+            <li <?php if ($page == 'laporan_penerimaan_uang') {
                   echo 'class="active"';
                 } ?>>
               <a href="<?php echo base_url('Laporan_penerimaan_uang'); ?>">
                 <i class="glyphicon glyphicon-list-alt"></i>
                 <span>Penerimaan Uang SPP</span>
+              </a>
+            </li>
+            <li <?php if ($page == 'laporan_bulanan_spp') {
+                  echo 'class="active"';
+                } ?>>
+              <a href="<?php echo base_url('Laporan_bulanan_spp/index_admin'); ?>">
+                <i class="glyphicon glyphicon-list-alt"></i>
+                <span>Laporan Bulanan SPP</span>
               </a>
             </li>
             <li <?php if ($page == 'laporan_ppdb') {
