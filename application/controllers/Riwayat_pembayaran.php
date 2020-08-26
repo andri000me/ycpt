@@ -105,20 +105,10 @@ class Riwayat_Pembayaran extends AUTH_Controller
 				LEFT JOIN kelas_siswa ON kelas_siswa.id_kelas_siswa = kelas_siswa_detail.id_kelas_siswa
 				LEFT JOIN tahun_ajaran ON tahun_ajaran.id_tahun_ajaran = kelas_siswa.id_tahun_ajaran
 				WHERE kelas_siswa.id_tahun_ajaran = '$id_tahun_ajaran' AND kelas_siswa_detail.id_siswa = '$id_siswa'");
-		// $data3 = $this->db->query($sql);
-		// return $data3->result();
+		$query = $this->db->query($sql)->row();
+
 		foreach ($sql->result_array() as $row => $a) {
 		}
-
-		// echo $nis; 					
-		// echo $hasil2;				
-		// echo $id_tahun_ajaran_siswa;	
-		// echo $id_tahun_ajaran;		
-		// echo $id_setting_pembayaran	;
-		// echo $nominal;
-		// echo $id_siswa;
-		// echo $a['id_kelas_siswa_detail'];				
-		// exit();
 
 		$nis 						= $nis;
 		$id_pembayaran 				= $hasil2;
@@ -146,6 +136,8 @@ class Riwayat_Pembayaran extends AUTH_Controller
 			'nominal'				=> $nominal
 
 		);
+		// var_dump($data1);
+		// die;
 
 		$this->M_riwayat_pembayaran->insert_pembayaran($data1);
 		$this->M_riwayat_pembayaran->insert_detail_pembayaran($data2);

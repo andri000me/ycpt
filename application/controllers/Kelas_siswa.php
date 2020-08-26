@@ -130,7 +130,7 @@ class Kelas_siswa extends AUTH_Controller
 		$id_user 			= $this->userdata->id_user;
 		$data['page'] 		= "Kelas Siswa";
 		$data['judul'] 		= "Data Master";
-		$data['deskripsi'] 	= "Manage Data Kelas Siswa";		
+		$data['deskripsi'] 	= "Manage Data Kelas Siswa";
 		$data['kelas'] 		= $this->M_kelas_siswa->select_all_kelas_siswa1($id);
 		$data['siswa'] 		= $this->M_kelas_siswa->select_all_siswa($id_user);
 		$data['kelas_siswa'] = $this->M_kelas_siswa->select_all_kelas_siswa_detail($id);
@@ -178,19 +178,19 @@ class Kelas_siswa extends AUTH_Controller
 			'id_siswa' => $id_siswa
 
 		);
-		$cek_id = $this->M_kelas_siswa->select_kelas_siswa_detail($id,$id_siswa);
+		$cek_id = $this->M_kelas_siswa->select_kelas_siswa_detail($id, $id_siswa);
 
-		if($cek_id) {
+		if ($cek_id) {
 			$this->session->set_flashdata('msg', show_err_msg('Siswa ini sudah ada'));
 		} else {
 			$this->M_kelas_siswa->insert_siswa($data);
-			$this->M_kelas_siswa->update_data($where,$data_siswa,'siswa');
+			$this->M_kelas_siswa->update_data($where, $data_siswa, 'siswa');
 			$this->session->set_flashdata('msg', show_succ_msg('Data Berhasil disimpan'));
 		}
 		redirect('kelas_siswa/detail/' . $id);
 	}
 
-	public function delete_siswa($id_kelas_siswa_detail,$id_kelas_siswa,$id_siswa)
+	public function delete_siswa($id_kelas_siswa_detail, $id_kelas_siswa, $id_siswa)
 	{
 		$kelas 	= $id_kelas_siswa;
 		$data 	= array('id_kelas_siswa_detail' => $id_kelas_siswa_detail);
@@ -200,7 +200,7 @@ class Kelas_siswa extends AUTH_Controller
 		$data_siswa = array(
 			'id_tahun_ajaran' => 0
 		);
-		$this->M_kelas_siswa->update_data($where,$data_siswa,'siswa');
+		$this->M_kelas_siswa->update_data($where, $data_siswa, 'siswa');
 		$this->M_kelas_siswa->delete($data, 'kelas_siswa_detail');
 		$this->session->set_flashdata('msg', show_succ_msg('Data Berhasil dihapus'));
 		redirect('kelas_siswa/detail/' . $kelas);
