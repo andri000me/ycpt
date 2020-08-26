@@ -1,9 +1,10 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_siswa extends CI_Model {
+class M_siswa extends CI_Model
+{
 
-	public function select_all_siswa($id) 
+	public function select_all_siswa($id)
 	{
 		$sql = "SELECT * FROM siswa
 				LEFT JOIN kelas ON kelas.id_kelas = siswa.id_kelas_siswa
@@ -11,12 +12,12 @@ class M_siswa extends CI_Model {
 				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = siswa.id_unit_pendidikan
 				LEFT JOIN user ON user.id_unit_pendidikan = unit_pendidikan.id_unit_pendidikan
 				WHERE user.id_user = '$id'
-				ORDER BY siswa.id_siswa DESC";
+				ORDER BY siswa.nama_siswa ASC";
 		$data = $this->db->query($sql);
 		return $data->result();
 	}
 
-	public function select_siswa($id) 
+	public function select_siswa($id)
 	{
 		$sql = "SELECT * FROM siswa
 				LEFT JOIN tahun_ajaran ON tahun_ajaran.id_tahun_ajaran = siswa.id_tahun_ajaran
@@ -27,7 +28,7 @@ class M_siswa extends CI_Model {
 		return $data->result();
 	}
 
-	public function select_all_unit_pendidikan($id) 
+	public function select_all_unit_pendidikan($id)
 	{
 		$sql = "SELECT * FROM unit_pendidikan
 				LEFT JOIN user ON user.id_unit_pendidikan = unit_pendidikan.id_unit_pendidikan
@@ -36,14 +37,14 @@ class M_siswa extends CI_Model {
 		return $data->result();
 	}
 
-	public function select_unit_pendidikan() 
+	public function select_unit_pendidikan()
 	{
 		$sql = "SELECT * FROM unit_pendidikan";
 		$data = $this->db->query($sql);
 		return $data->result();
 	}
 
-	public function select_unit_pendidikan_siswa($id) 
+	public function select_unit_pendidikan_siswa($id)
 	{
 		$sql = "SELECT * FROM unit_pendidikan
 				WHERE id_unit_pendidikan = '$id'";
@@ -53,18 +54,18 @@ class M_siswa extends CI_Model {
 
 	public function insert($data)
 	{
-		$this->db->insert('siswa',$data);
+		$this->db->insert('siswa', $data);
 	}
 
-	function edit_data($where,$table)
-	{		
-		return $this->db->get_where($table,$where);
+	function edit_data($where, $table)
+	{
+		return $this->db->get_where($table, $where);
 	}
 
-	function update_data($where,$data,$table)
+	function update_data($where, $data, $table)
 	{
 		$this->db->where($where);
-		$this->db->update($table,$data);
+		$this->db->update($table, $data);
 	}
 
 	// function detail_data($where,$table)
@@ -72,10 +73,9 @@ class M_siswa extends CI_Model {
 	// 	return $this->db->get_where($table,$where);
 	// }
 
-	public function delete($data,$table) 
+	public function delete($data, $table)
 	{
 		$this->db->where($data);
 		$this->db->delete($table);
 	}
-	
 }
