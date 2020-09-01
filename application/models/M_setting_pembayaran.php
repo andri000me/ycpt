@@ -29,7 +29,7 @@ class M_setting_pembayaran extends CI_Model
 				WHERE unit_pendidikan.id_unit_pendidikan = '$id' 
 				AND tipe_pembayaran LIKE 'SPP Bulan%'
 				GROUP BY tipe_pembayaran
-				ORDER BY setting_pembayaran.id_setting_pembayaran DESC";
+				ORDER BY setting_pembayaran.id_setting_pembayaran ASC";
 		$data = $this->db->query($sql);
 		return $data->result();
 	}
