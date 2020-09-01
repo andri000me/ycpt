@@ -49,10 +49,11 @@
             </td>
             <td><?php echo $k->nama_ortu; ?></td>
             <td><?php echo $k->alamat; ?></td>
-            <?php if($k->id_kelas_siswa  == 0 ) { ?>
+            <?php if ($k->id_kelas_siswa  == 0) { ?>
               <td>Belum ada kelas</td>
             <?php } else { ?>
-              <td> <?php echo $k->nama_tipe_kelas; ?> <?php echo $k->kelas; ?></td>
+              <td> <?php echo $k->nama_tipe_kelas;
+                    ?> <?php echo $k->kelas; ?></td>
             <?php } ?>
             <td><?php echo $k->status; ?></td>
             <td class="text-center" style="min-width:230px;">

@@ -52,7 +52,7 @@
                       </tr>
                       </tr>
                       <td>Kelas</td>
-                      <td><?php echo $m->kelas; ?></td>
+                      <td><?php echo $m->nama_tipe_kelas . ' ' . $m->kelas; ?></td>
                       </tr>
                       <tr>
                         <td>Nama Orang Tua / Wali</td>
