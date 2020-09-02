@@ -17,12 +17,23 @@ class M_riwayat_pembayaran extends CI_Model
 
 	public function select_all_setting_bayar($nis, $id, $id_tahun_ajaran)
 	{
+		$tk = "SELECT id_tipe_kelas FROM siswa 
+		LEFT JOIN kelas_siswa ON kelas_siswa.id_kelas_siswa = siswa.id_kelas_siswa
+	    LEFT JOIN kelas ON kelas.id_kelas = kelas_siswa.id_kelas
+		WHERE siswa.nis = $nis";
+
+		$rtk = $this->db->query($tk)->row();
+		// echo $rtk->id_tipe_kelas;
+		// die;
+
 		$sql = "SELECT * FROM setting_pembayaran 
 	 			LEFT JOIN tahun_ajaran ON tahun_ajaran.id_tahun_ajaran = setting_pembayaran.id_tahun_ajaran
 				LEFT JOIN tipe_pembayaran ON tipe_pembayaran.id_tipe_pembayaran = setting_pembayaran.id_tipe_pembayaran
 	 			LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = setting_pembayaran.id_unit_pendidikan
 				LEFT JOIN user ON user.id_unit_pendidikan = unit_pendidikan.id_unit_pendidikan
-	 			WHERE user.id_user = '$id' AND setting_pembayaran.id_tahun_ajaran >='$id_tahun_ajaran'
+	 			WHERE user.id_user = '$id' 
+				AND setting_pembayaran.id_tahun_ajaran ='$id_tahun_ajaran' 
+				AND setting_pembayaran.id_tipe_kelas = '$rtk->id_tipe_kelas'
 	 			ORDER BY setting_pembayaran.id_setting_pembayaran ASC";
 		$data = $this->db->query($sql);
 		return $data->result();
@@ -46,6 +57,7 @@ class M_riwayat_pembayaran extends CI_Model
 		$sql = "SELECT * FROM siswa
 				LEFT JOIN kelas_siswa ON kelas_siswa.id_kelas_siswa = siswa.id_kelas_siswa
 				LEFT JOIN kelas on kelas.id_unit_pendidikan = kelas_siswa.id_unit_pendidikan
+				LEFT JOIN tipe_kelas on kelas.id_tipe_kelas = tipe_kelas.id_tipe_kelas
 				WHERE nis = '$nis' ";
 		$data = $this->db->query($sql);
 		return $data->result();

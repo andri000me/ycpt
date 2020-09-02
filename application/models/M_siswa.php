@@ -13,6 +13,7 @@ class M_siswa extends CI_Model
 				LEFT JOIN user ON user.id_unit_pendidikan = unit_pendidikan.id_unit_pendidikan
 				WHERE user.id_user = '$id'
 				ORDER BY tipe_kelas.nama_tipe_kelas, kelas.kelas, siswa.nama_siswa ASC";
+		// ORDER BY siswa.id_siswa DESC";
 		$data = $this->db->query($sql);
 		return $data->result();
 	}
