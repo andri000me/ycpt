@@ -21,7 +21,8 @@
         <select class="form-control select2" name="id_tipe_kelas" id="id_tipe_kelas" data-placeholder="Select Kelas">
           <option></option>
           <?php foreach ($tipe_kelas as $j) { ?>
-            <option value="<?php echo $j->id_tipe_kelas; ?>" <?php if ($j->id_tipe_kelas == $k->id_tipe_kelas) {
+            <option value="<?php echo $j->id_tipe_kelas; ?>" <?php
+                                                              if ($j->id_tipe_kelas == $k->id_tipe_kelas) {
                                                                 echo "selected='selected'";
                                                               } ?>><?php echo $j->nama_tipe_kelas; ?></option>
           <?php } ?>

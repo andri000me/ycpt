@@ -6,8 +6,16 @@ class M_siswa extends CI_Model
 
 	public function select_all_siswa($id)
 	{
+		// $sql = "SELECT * FROM siswa
+		// 		LEFT JOIN kelas ON kelas.id_kelas = siswa.id_kelas_siswa
+		// 		LEFT JOIN tipe_kelas ON tipe_kelas.id_tipe_kelas = kelas.id_tipe_kelas
+		// 		LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = siswa.id_unit_pendidikan
+		// 		LEFT JOIN user ON user.id_unit_pendidikan = unit_pendidikan.id_unit_pendidikan
+		// 		WHERE user.id_user = '$id'
+		// 		ORDER BY tipe_kelas.nama_tipe_kelas, kelas.kelas, siswa.nama_siswa ASC";
 		$sql = "SELECT * FROM siswa
-				LEFT JOIN kelas ON kelas.id_kelas = siswa.id_kelas_siswa
+				LEFT JOIN kelas_siswa ON kelas_siswa.id_kelas_siswa = siswa.id_kelas_siswa
+				LEFT JOIN kelas ON kelas.id_kelas = kelas_siswa.id_kelas
 				LEFT JOIN tipe_kelas ON tipe_kelas.id_tipe_kelas = kelas.id_tipe_kelas
 				LEFT JOIN unit_pendidikan ON unit_pendidikan.id_unit_pendidikan = siswa.id_unit_pendidikan
 				LEFT JOIN user ON user.id_unit_pendidikan = unit_pendidikan.id_unit_pendidikan
