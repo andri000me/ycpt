@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <?php if ($this->session->userdata("level") == 0) { ?>
+
+<head>
+  <?php if ($this->session->userdata("level") == 0) { ?>
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>asset/img/logo1.png">
     <title>Dashboard Admin</title>
-    <?php } else { ?>
+  <?php } else { ?>
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>asset/img/logo1.png">
     <title>Dashboard User</title>
-    <?php } ?>
-    <!-- meta -->
-    <?php echo @$_meta; ?>
+  <?php } ?>
+  <!-- meta -->
+  <?php echo @$_meta; ?>
 
-    <!-- css --> 
-    <?php echo @$_css; ?>
+  <!-- css -->
+  <?php echo @$_css; ?>
 
-    <!-- jQuery 2.2.3 -->
-    <script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
-  </head>
+  <!-- jQuery 2.2.3 -->
+  <script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+</head>
 
-  <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
-      <!-- header -->
-      <?php echo @$_header; ?> <!-- nav -->
-      
-      <!-- sidebar -->
-      <?php echo @$_sidebar; ?>
-      
-      <!-- content -->
-      <?php echo @$_content; ?> <!-- headerContent --><!-- mainContent -->
-    
-      <!-- footer -->
-      <?php echo @$_footer; ?>
-    
-      <div class="control-sidebar-bg"></div>
-    </div>
+<body class="hold-transition skin-blue sidebar-mini fixed">
+  <div class="wrapper">
+    <!-- header -->
+    <?php echo @$_header; ?>
+    <!-- nav -->
 
-    <!-- js -->
-    <?php echo @$_js; ?>
-  </body>
+    <!-- sidebar -->
+    <?php echo @$_sidebar; ?>
+
+    <!-- content -->
+    <?php echo @$_content; ?>
+    <!-- headerContent -->
+    <!-- mainContent -->
+
+    <!-- footer -->
+    <?php echo @$_footer; ?>
+
+    <div class="control-sidebar-bg"></div>
+  </div>
+
+  <!-- js -->
+  <?php echo @$_js; ?>
+</body>
+
 </html>

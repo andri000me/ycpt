@@ -8,7 +8,7 @@
     <?php echo @$this->session->flashdata('msg'); ?>
   </div>
   <!-- /.box-header -->
-  <div class="box-body">
+  <div class="box-body" style="overflow: auto;">
     <table id="list-data" class="table table-bordered table-striped">
       <thead>
         <tr>
