@@ -53,7 +53,8 @@
               <td>Belum ada kelas</td>
             <?php } else { ?>
               <td> <?php echo $k->nama_tipe_kelas;
-                    ?> <?php echo $k->kelas; ?></td>
+                    ?> <?php echo $k->kelas;
+                        ?></td>
             <?php } ?>
             <td><?php echo $k->status; ?></td>
             <td class="text-center" style="min-width:230px;">
