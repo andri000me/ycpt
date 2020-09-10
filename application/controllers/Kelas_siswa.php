@@ -168,7 +168,7 @@ class Kelas_siswa extends AUTH_Controller
 
 		$data_siswa = array(
 
-			'id_kelas_siswa' => $kelas,
+			'id_kelas_siswa' => $id_kelas,
 			'id_tahun_ajaran' => $id_tahun_ajaran
 
 
