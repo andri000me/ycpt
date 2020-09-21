@@ -133,7 +133,7 @@
                   $b = 'riwayat_pembayaran';
                   if ($hasil == 0) {
                     echo 'LUNAS';
-                    echo '<a target="_BLANK" href="' . base_url() . 'riwayat_pembayaran/cetak/' . $m->id_siswa . '/' . $k->id_setting_pembayaran . '">
+                    echo '<a onclick="return confirm(\'are you sure?\')" target="_BLANK" href="' . base_url() . 'riwayat_pembayaran/cetak/' . $m->id_siswa . '/' . $k->id_setting_pembayaran . '">
                       <button class="btn btn-basic">
                       <i class="glyphicon glyphicon-print"></i> CETAK
                       </button>';
